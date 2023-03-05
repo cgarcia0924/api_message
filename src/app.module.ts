@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import configurationAuth from './configuration/configuration-auth';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DevopsModule } from './modules/devops/devops.module';
-import configurationAuth from './configuration/configuration-auth';
-import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+require('dotenv').config();
+
 @Module({
   imports: [
     ConfigModule.forRoot({
