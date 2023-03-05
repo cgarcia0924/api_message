@@ -1,8 +1,9 @@
-import { Body, Controller, BadRequestException, ForbiddenException, HttpException, HttpStatus, Post, Res, Get, Put, Patch, Delete, Head } from '@nestjs/common';
+import { Body, UseGuards, Controller, BadRequestException, ForbiddenException, HttpException, HttpStatus, Post, Res, Get, Put, Patch, Delete, Head } from '@nestjs/common';
 import { DevopsService } from './devops.service';
 import { JwtService } from '@nestjs/jwt';
 import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { UsersDto } from '../users/dto/users-dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('devops')
 @ApiTags('Api Messege')
@@ -16,6 +17,7 @@ export class DevopsController {
 
     }
     @Post()
+    @UseGuards(AuthGuard('jwt'))
     @ApiOperation({
         description: 'Crea un mensaje, se debe adjuntar la Api Keys'
     })
