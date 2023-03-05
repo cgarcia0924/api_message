@@ -6,8 +6,7 @@ import { UsersDto } from './dto/users-dto';
 export class UsersService {
     private _users: UsersDto[];
     constructor(
-
-        ) {
+    ) {
         // Inicializamos el array de usuarios
         this._users = [];
     }
@@ -22,5 +21,13 @@ export class UsersService {
         } else {
             return false;
         }
+    }
+    /**
+     * Busca el usuario por su email
+     * @param email 
+     * @returns 
+     */
+    findUserbyEmail(email: string,  ) {
+        return this._users.find(u => u.email == email)
     }
 }

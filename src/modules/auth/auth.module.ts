@@ -7,6 +7,7 @@ import { AuthMiddleware } from './auth.middleware';
 import { ApikeyService } from './strategy/apikey/apikey.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtService } from './strategy/jwt/jwt.service';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { JwtService } from './strategy/jwt/jwt.service';
       },
       inject: [ConfigService]
     }),
+    UsersModule
   
   ],
   controllers: [AuthController],
@@ -30,6 +32,6 @@ import { JwtService } from './strategy/jwt/jwt.service';
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // consumer.apply(AuthMiddleware).forRoutes('*');
-    consumer.apply(AuthMiddleware).exclude('users').forRoutes('*')
+    consumer.apply(AuthMiddleware).exclude('users', 'auth/login').forRoutes('*')
   }
 }
