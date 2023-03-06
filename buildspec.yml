@@ -8,16 +8,27 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
+      - npm install
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
+      - npm run start:prod
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Run test completed on `date`
+      - npm run test
+      - echo Run E2E completed on `date`
+      - npm run test:e2e
+      - echo Run Coverage on `date`
+      - npm run test:cov
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
 artifacts:
   files:
-    - '**/*'
+    - index.js
+    - dist/**/*
+    - request-map.js
+    - credentials.json
+    - node_modules/**/*
