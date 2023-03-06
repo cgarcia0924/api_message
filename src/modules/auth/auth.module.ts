@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestMiddleware, NestModule } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestMiddleware,
+  NestModule,
+} from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
@@ -18,20 +23,22 @@ import { UsersModule } from '../users/users.module';
       useFactory: (configService: ConfigService) => {
         return {
           secret: configService.get('auth.secretKey'),
-          signOptions: { expiresIn: '180s' }
-        }
+          signOptions: { expiresIn: '180s' },
+        };
       },
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
-    UsersModule
-  
+    UsersModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, ApikeyService, JwtService]
+  providers: [AuthService, ApikeyService, JwtService],
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // consumer.apply(AuthMiddleware).forRoutes('*');
-    consumer.apply(AuthMiddleware).exclude('users', 'auth/login').forRoutes('*')
+    consumer
+      .apply(AuthMiddleware)
+      .exclude('users', 'auth/login')
+      .forRoutes('*');
   }
 }

@@ -4,11 +4,8 @@ import { DevopsService } from './devops.service';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
-
-  ],
+  imports: [PassportModule.register({ defaultStrategy: 'jwt' })],
   controllers: [DevopsController],
-  providers: [DevopsService]
+  providers: [DevopsService],
 })
 export class DevopsModule {}

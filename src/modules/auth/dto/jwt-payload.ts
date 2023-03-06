@@ -1,3 +1,3 @@
-export class JwtPayload{
-    email: string;
+export class JwtPayload {
+  email: string;
 }

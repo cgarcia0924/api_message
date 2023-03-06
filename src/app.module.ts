@@ -13,12 +13,12 @@ require('dotenv').config();
     ConfigModule.forRoot({
       load: [configurationAuth],
       envFilePath: `./env/${process.env.NODE_ENV}.env`,
-      isGlobal: true
-    }),    
+      isGlobal: true,
+    }),
     DevopsModule,
     AuthModule,
-    UsersModule
-  ],    
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

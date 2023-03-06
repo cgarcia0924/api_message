@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Bienvenido, Api by Carlos Garcia Chacon!"', () => {
+      expect(appController.getHello()).toBe(
+        'Bienvenido, Api by Carlos Garcia Chacon!',
+      );
     });
   });
 });
