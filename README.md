@@ -1,5 +1,5 @@
-<p align="center">Ingeniero Carlos García, Arquitecto de Soluciones Asociado de <a href="https://aws.amazon.com/es/" target="_blank">AWS</a>.</p>
-<p align="center">
+## <p align="">Ingeniero Carlos García, Arquitecto de Soluciones Asociado y Desarrollador Asociado de <a href="https://aws.amazon.com/es/" target="_blank">AWS</a>.</p>
+
 <p align="center">
   <a href="https://www.linkedin.com/in/ingcarlosgarciachacon/" target="blank"><img src="https://media.licdn.com/dms/image/C5603AQHQqJttsF0cJg/profile-displayphoto-shrink_200_200/0/1656990249470?e=1683763200&v=beta&t=B8efnOKuHa1El-fWUwCYhuchgzP7-S70tLNlaF6EgTQ" width="200" alt="Nest Logo" /></a>
 </p>
