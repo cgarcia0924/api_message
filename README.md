@@ -50,6 +50,65 @@ A continuación se presenta una vista de la solución implementada en el servici
 <a href="https://ibb.co/bWXj35f"><img src="https://i.ibb.co/Lk1DPdG/Screenshot-2023-03-06-at-11-35-18-PM.png" alt="Screenshot-2023-03-06-at-11-35-18-PM" border="0"></a>
 </p>
 
+## Probemos la API mediante un CURL
+1. Generemos un usuario con la siguiente API:
+
+Estructura API Curl
+
+```bash
+curl --location --request POST 'http://localhost:3000/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "carlos.garcia0924@gmail.com"
+}'
+```
+Nota: Con la API anterior estamos registrando un usuario en el sistema para el cual se generará un jwt válido por 180s
+
+2. Generemos un JWT: Una vez registramos el correo, usuremos este mismo correo para generar el token para autenticación y uso de la api
+
+Estructura API Curl
+
+```bash
+curl --location --request POST 'http://localhost:3000/auth/login' \
+--header 'X-Parse-REST-API-Key: 2f5ae96c-b558-4c7b-a590-a501ae1c3f6c' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "carlos.garcia0924@gmail.com"
+}'
+```
+3. Probemos la API Message
+Para la validación de la API recomiendo seguir la siguiente estructura 
+Se debe reemplazar en la estructura inicial los siguientes parámetros:
+  - https -> http
+  - X-Parse-REST-API-Key -> apiKey
+  - X-JWT-KWY -> Authorization (se debe agregar la expresion "Bearer" + el jwt)
+
+Dadas las indicaciones anteriores la API funcionará correctamente mediante la siguiente estructura:
+
+Estructura API Curl
+
+```bash
+curl -X 'POST' \
+  'http://${HOST}/DevOps' \
+  -H 'apiKey: 2f5ae96c-b558-4c7b-a590-a501ae1c3f6c' \
+  -H 'Authorization: Bearer ${JWT}"' \
+  -H 'Content-Type: application/json' \
+  -d '{ 
+  "message": "This is a test",
+  "to": "Juan Perez",
+  "from": "Rita Asturia",
+  "timeToLifeSec": 45
+}'
+```
+
+## Acceso mediante el endpoint expuesto
+
+
+<p>Mediante el siguiente endpoint: <a href="http://neoris-alb-1387667673.us-east-1.elb.amazonaws.com/#/2%20-%20Auth%3A%20Generar%20token%20para%20api/AuthController_login">DNS publico </a></p>
+<p align="center">
+<a href="http://neoris-alb-1387667673.us-east-1.elb.amazonaws.com/#/2%20-%20Auth%3A%20Generar%20token%20para%20api/AuthController_login"><img src="https://i.ibb.co/CKfLkx2/Screenshot-2023-03-07-at-3-52-56-AM.png" alt="Screenshot-2023-03-07-at-3-52-56-AM" border="0"></a>
+
+Podran guiarse de la documentación de cada API para probar los servicios.
 
 ## Desarrollo de Api REST en NestJs
 

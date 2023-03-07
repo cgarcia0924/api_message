@@ -3,34 +3,26 @@ import { AuthCredentialsDto } from './dto/auth-credentials-dto';
 import {
   Body,
   Controller,
-  Delete,
-  Get,
-  Param,
   Post,
-  Put,
-  Query,
 } from '@nestjs/common';
 import {
-  ApiBearerAuth,
   ApiBody,
   ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
-import { AuthGuard } from '@nestjs/passport';
-
 @Controller('auth')
-@ApiTags('2 - Auth: Generar token para api')
+@ApiTags('Token')
 export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('/login')
   @ApiOperation({
-    description: 'Nos loguea en la aplicacion',
+    description: 'Generar token para el uso de la api',
   })
   @ApiBody({
-    description: 'Nos loguea en la aplicacion usando las credenciales',
-    type: AuthCredentialsDto,
+    description: 'Permite la generación de un JWT para continuar con el proceso',
+    // type: AuthCredentialsDto,
     examples: {
       ejemplo: {
         value: {
@@ -41,12 +33,13 @@ export class AuthController {
   })
   @ApiResponse({
     status: 401,
-    description: 'Credenciales inválidas',
+    description: 'Parámetro incorrecto, debe ser formato correo',
   })
   @ApiResponse({
     status: 201,
-    description: 'Login realizado con éxito',
+    description: 'Token generado con éxito',
   })
+  
   login(@Body() authCredentials: AuthCredentialsDto) {
     return this.authService.login(authCredentials);
   }

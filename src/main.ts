@@ -11,6 +11,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   const config = new DocumentBuilder()
+    .addApiKey({type: 'apiKey', name: 'apiKey', in: 'header'})
     .setTitle('Api Neoris - Carlos Garcia Chacon ')
     .setDescription('Api Documentation')
     .setVersion('1.0')
@@ -24,10 +25,18 @@ async function bootstrap() {
     .build();
   // const document = SwaggerModule.createDocument(app, config);
   // SwaggerModule.setup('/', app, document);
-  const catDocument = SwaggerModule.createDocument(app, config, {
-    include: [DevopsModule, AuthModule, UsersModule], // don't include, say, BearsModule
-  });
-  SwaggerModule.setup('/', app, catDocument);  
+  const catDocument = SwaggerModule.createDocument(
+    app, 
+    config, 
+    {
+    include: [AuthModule,UsersModule], // don't include, say, BearsModule
+    // include: [DevopsModule, AuthModule,UsersModule], // don't include, say, BearsModule
+    }
+  );
+  // SwaggerModule.setup('/', app, catDocument); quito shemas en swagger
+  SwaggerModule.setup('/', app, catDocument, {
+    swaggerOptions: { defaultModelsExpandDepth: -1 },
+  }); 
   await app.listen(3000);
 }
 bootstrap();

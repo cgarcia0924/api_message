@@ -1,25 +1,18 @@
 import {
   Body,
   Controller,
-  Delete,
-  Get,
-  Param,
   Post,
-  Put,
-  Query,
 } from '@nestjs/common';
 import {
   ApiBody,
   ApiOperation,
-  ApiParam,
-  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
 
 import { UsersDto } from './dto/users-dto';
 import { UsersService } from './users.service';
 @Controller('users')
-@ApiTags('1 - Users: Crear usuarios para autenticación')
+@ApiTags('User')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 

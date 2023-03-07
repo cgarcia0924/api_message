@@ -16,7 +16,7 @@ import { UsersDto } from '../users/dto/users-dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('devops')
-@ApiTags('3 - Api: Probar métodos requeridos')
+@ApiTags('Api')
 // @Controller('api/v1/devops')
 export class DevopsController {
   constructor(private devopsService: DevopsService) { }
@@ -27,7 +27,7 @@ export class DevopsController {
   })
   @ApiBody({
     description:
-      'Crea un mensaje, mediante un UsersDto. Devuelve retorna en formato json si se realiza con exito.',
+      'Crea un mensaje. Devuelve en formato json si se realiza con exito.',
     type: UsersDto,
     examples: {
       ejemplo1: {
