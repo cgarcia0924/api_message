@@ -7,16 +7,6 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
 ## Diseño de Solución para Infraestructura en Nube de AWS
 <p> A continuación se presenta el modelo de la solución  </p>
 <p align="center">
@@ -60,14 +50,16 @@ En definitiva, NestJS agiliza increíblemente el trabajo que supone desarrollar 
 Cualquier desarrollador Backend que emplee de manera habitual NodeJS debería aprender a trabajar con NestJS, algo que no le supondrá ningún problema si está familiarizado con TypeScript. Si no es el caso, debería empezar aprendiendo este lenguaje: es posible que termine sustituyendo JavaScript.
 
 
-epitech: 
-https://www.epitech-it.es/nestjs-que-es/#:~:text=NestJS%20presenta%20varios%20beneficios%20que,todo%20tipo%20de%20aplicaciones%20Backend.
-
-<p align="center">***Tomado de <a href="https://www.epitech-it.es/nestjs-que-es/#:~:text=NestJS%20presenta%20varios%20beneficios%20que,todo%20tipo%20de%20aplicaciones%20Backend." target="_blank">epitech</a> </p>
+<p align="">***Tomado de <a href="https://www.epitech-it.es/nestjs-que-es/#:~:text=NestJS%20presenta%20varios%20beneficios%20que,todo%20tipo%20de%20aplicaciones%20Backend." target="_blank">epitech</a> </p>
 
 
 ## Acerca de NestJs
 
+<p align="">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
