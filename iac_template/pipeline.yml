@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create a CodePipeline to include Nested CloudFormation, CodeBuild and Approval steps.
+
+Parameters:
+  ARNRole:
+    Type: String
+    Description: Role del servicio
+    Default: arn:aws:iam::665137097118:role/service-role/AWSCodePipelineServiceRole-us-east-1-api_neoris_pipeline
+  NamePipeline:
+    Type: String
+    Description: nombre del Pipeline
+    Default: api_neoris_deploy_ecs
+  NameBuild:
+    Type: String
+    Description: nombre proyecto code build
+    Default: api_neoris_docker_build
+  NameService:
+    Type: String
+    Description: Service name
+    Default: neoris-service
+  NameCluster:
+    Type: String
+    Description: Nombre del cluster
+    Default: test
+  NameNamespace:
+    Type: String
+    Description: Nombre del cluster
+    Default: DeployVariables
+
+Resources:
+  DeployPipeline:
+    Type: "AWS::CodePipeline::Pipeline"
+    Properties:
+      Name: !Ref NamePipeline
+      RoleArn: !Ref ARNRole
+      Stages:
+        - 
+          Name: Source
+          Actions:
+            - 
+              Name: Source
+              ActionTypeId:
+                Category: Source
+                Owner: ThirdParty
+                Provider: GitHub
+                Version: '1'
+              RunOrder: 1
+              Configuration:
+                Branch: main
+                OAuthToken: '****'
+                Owner: cgarcia0924
+                PollForSourceChanges: 'false'
+                Repo: api_message
+              OutputArtifacts:
+                - Name: SourceArtifact
+              InputArtifacts: []
+              Region: us-east-1
+              Namespace: SourceVariables
+        - 
+          Name: Build
+          Actions:
+            - Name: Build
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: '1'
+              RunOrder: 1
+              Configuration:
+                ProjectName: !Ref NameBuild
+              OutputArtifacts:
+                - Name: BuildArtifact
+              InputArtifacts:
+                - Name: SourceArtifact
+              Region: us-east-1
+              Namespace: BuildVariables
+        - Name: Deploy
+          Actions:
+            - Name: Deploy
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: ECS
+                Version: '1'
+              RunOrder: 1
+              Configuration:
+                ClusterName: !Ref NameCluster
+                ServiceName: !Ref NameService
+              OutputArtifacts: []
+              InputArtifacts:
+                - Name: BuildArtifact
+              Region: us-east-1
+              Namespace: !Ref NameNamespace
+      ArtifactStore:
+        Type: S3
+        Location: codepipeline-us-east-1-699711829438
+    Metadata:
+      pipelineArn: 'arn:aws:codepipeline:us-east-1:665137097118:api_neoris_deploy_ecs'
+      created: '2023-03-06T21:49:31.123000-05:00'
+      updated: '2023-03-06T21:49:31.123000-05:00'        

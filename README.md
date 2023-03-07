@@ -31,9 +31,11 @@ Asi mismo se encuentra en el proyecto el archivo (Dockerfile), el cual contine l
 
 ## IaC
 En este repo se cuenta con el archivo template.yml en la siguiente ruta:
+```bash
 - api_message
   - iac_template
     - template.yml
+```
 
 En esta carpeta se encuentra el codigo para la generacion de la infraestructura por medio de cloudformation, los recursos creados por medio de template son:
 - ECS Service
@@ -46,6 +48,14 @@ En esta carpeta se encuentra el codigo para la generacion de la infraestructura 
 
 ## CodePipeline
 A continuación se presenta una vista de la solución implementada en el servicio CodePiline
+En este repo se cuenta con el archivo template.yml en la siguiente ruta:
+
+```bash
+- api_message
+  - iac_template
+    - pipeline.yml
+```
+
 <p align="center">
 <a href="https://ibb.co/bWXj35f"><img src="https://i.ibb.co/Lk1DPdG/Screenshot-2023-03-06-at-11-35-18-PM.png" alt="Screenshot-2023-03-06-at-11-35-18-PM" border="0"></a>
 </p>
@@ -109,6 +119,16 @@ curl -X 'POST' \
 <a href="http://neoris-alb-1387667673.us-east-1.elb.amazonaws.com/#/2%20-%20Auth%3A%20Generar%20token%20para%20api/AuthController_login"><img src="https://i.ibb.co/CKfLkx2/Screenshot-2023-03-07-at-3-52-56-AM.png" alt="Screenshot-2023-03-07-at-3-52-56-AM" border="0"></a>
 
 Podran guiarse de la documentación de cada API para probar los servicios.
+
+<p>Es importante anotar que este framework nos habilito una gran cantidad de pruebas las cuales estan documentadas abajo.</p>
+
+<p>En este proyecto no se agregaron pasos para generacion del artefacto, pero es algo simple lo cual se debe hacer en el pipeline y generar el artefacto el cual se anexa aqui en el proyecto, en la siguiente ruta</p>
+
+```bash
+- api_message
+  - coverage
+```
+Se puede acceder a la ruta para visualizar el resultado de las pruebas.
 
 ## Desarrollo de Api REST en NestJs
 
