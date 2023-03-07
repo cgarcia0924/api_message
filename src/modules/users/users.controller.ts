@@ -19,7 +19,7 @@ import {
 import { UsersDto } from './dto/users-dto';
 import { UsersService } from './users.service';
 @Controller('users')
-@ApiTags('Users')
+@ApiTags('1 - Users: Crear usuarios para autenticación')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
@@ -34,7 +34,7 @@ export class UsersController {
     examples: {
       ejemplo1: {
         value: {
-          email: 'email@gmail.com',
+          email: 'test@gmail.com',
         },
       },
     },

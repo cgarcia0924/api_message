@@ -21,7 +21,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
-@ApiTags('Auth')
+@ApiTags('2 - Auth: Genero token para el usuario')
 export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('/login')
