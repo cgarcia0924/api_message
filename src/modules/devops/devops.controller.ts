@@ -2,25 +2,14 @@ import {
   Body,
   UseGuards,
   Controller,
-  BadRequestException,
-  ForbiddenException,
-  HttpException,
-  HttpStatus,
   Post,
   Res,
-  Get,
-  Put,
-  Patch,
-  Delete,
-  Head,
 } from '@nestjs/common';
 import { DevopsService } from './devops.service';
 import { JwtService } from '@nestjs/jwt';
 import {
   ApiBody,
   ApiOperation,
-  ApiParam,
-  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
 import { UsersDto } from '../users/dto/users-dto';
@@ -30,7 +19,7 @@ import { AuthGuard } from '@nestjs/passport';
 @ApiTags('3 - Api: Probar métodos requeridos')
 // @Controller('api/v1/devops')
 export class DevopsController {
-  constructor(private devopsService: DevopsService) {}
+  constructor(private devopsService: DevopsService) { }
   @Post()
   @UseGuards(AuthGuard('jwt'))
   @ApiOperation({
@@ -64,25 +53,5 @@ export class DevopsController {
         data.timeToLifeSec,
       ),
     );
-  }
-  @Put()
-  async findPut() {
-    // throw new HttpException('ERRORR-Put', HttpStatus.NOT_FOUND);
-    return 'ERROR';
-  }
-  @Get()
-  async findGet() {
-    return 'ERROR';
-    throw new HttpException('ERROR-Get', HttpStatus.NOT_FOUND);
-  }
-  @Patch()
-  async findpatch() {
-    return 'ERROR';
-    throw new HttpException('ERROR-Patch', HttpStatus.NOT_FOUND);
-  }
-  @Delete()
-  async findDelete() {
-    return 'ERROR';
-    throw new HttpException('ERROR-Delete', HttpStatus.NOT_FOUND);
   }
 }

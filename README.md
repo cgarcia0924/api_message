@@ -30,7 +30,7 @@ Para el proceso de implementación de las canalizaciones de AWS se requierte el 
 Asi mismo se encuentra en el proyecto el archivo (Dockerfile), el cual contine los pasos para la generación de la imagen, se cuenta con un docker-compose.yml), el cual tambien está operativo pero no fue implementado en las canalizaciones, por que en caso de requerir se puede usar el comando "docker-compose up"
 
 ## IaC
-En este repo se cuenta con una carpeta:
+En este repo se cuenta con el archivo template.yml en la siguiente ruta:
 - api_message
   - iac_template
     - template.yml
