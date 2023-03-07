@@ -25,6 +25,31 @@ Acontinuación se presenta el diseño de la solución implementada en la nube de
  - Cloudwatch para monitoreo de eventos en los logs.
  - Application Load Balancer para distribución del tráfico entre los pods
 
+Para el proceso de implementación de las canalizaciones de AWS se requierte el archivo (buildspec.yml), pues contine los pasos necesarios para descargar la imagen y subierla al ECR.
+
+Asi mismo se encuentra en el proyecto el archivo (Dockerfile), el cual contine los pasos para la generación de la imagen, se cuenta con un docker-compose.yml), el cual tambien está operativo pero no fue implementado en las canalizaciones, por que en caso de requerir se puede usar el comando "docker-compose up"
+
+## IaC
+En este repo se cuenta con una carpeta:
+- api_message
+  - iac_template
+    - template.yml
+
+En esta carpeta se encuentra el codigo para la generacion de la infraestructura por medio de cloudformation, los recursos creados por medio de template son:
+- ECS Service
+- ECS Cluster
+- ALB
+- Listener
+- Target Group
+- AutoScaling
+- Template de Lanzamiento
+
+## CodePipeline
+A continuación se presenta una vista de la solución implementada en el servicio CodePiline
+<p align="center">
+<a href="https://ibb.co/bWXj35f"><img src="https://i.ibb.co/Lk1DPdG/Screenshot-2023-03-06-at-11-35-18-PM.png" alt="Screenshot-2023-03-06-at-11-35-18-PM" border="0"></a>
+</p>
+
 
 ## Desarrollo de Api REST en NestJs
 
