@@ -27,7 +27,7 @@ import { UsersDto } from '../users/dto/users-dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('devops')
-@ApiTags('3 - Api Messege: Métodos requeridos')
+@ApiTags('3 - Api: Probar métodos requeridos')
 // @Controller('api/v1/devops')
 export class DevopsController {
   constructor(private devopsService: DevopsService) {}
