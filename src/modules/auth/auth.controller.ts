@@ -13,7 +13,7 @@ import {
 } from '@nestjs/swagger';
 
 @Controller('auth')
-@ApiTags('Token')
+@ApiTags('Token - Api')
 export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('/login')
